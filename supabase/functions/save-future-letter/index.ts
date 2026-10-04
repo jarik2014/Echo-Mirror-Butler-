@@ -199,4 +199,4 @@ export async function saveFutureLetterFunction(
   }
 }
 
-serve(saveFutureLetterFunction);
+serve((req: Request) => saveFutureLetterFunction(req));

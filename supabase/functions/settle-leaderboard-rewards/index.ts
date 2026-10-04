@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import * as StellarSdk from "https://esm.sh/stellar-sdk@11";
+import * as StellarSdk from "npm:@stellar/stellar-sdk@11";
 import { auditLeaderboardCollusion } from "../_shared/collusion-detector.ts";
 
 const FRIENDBOT_URL = "https://friendbot.stellar.org/?addr=";

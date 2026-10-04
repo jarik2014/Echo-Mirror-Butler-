@@ -175,7 +175,7 @@ export async function getCryptoPriceFunction(
       return new Response(
         JSON.stringify({
           error: "Failed to fetch price data and no cached data available",
-          details: fetchError.message,
+          details: fetchError instanceof Error ? fetchError.message : String(fetchError),
         }),
         {
           headers: { "Content-Type": "application/json" },
@@ -188,7 +188,7 @@ export async function getCryptoPriceFunction(
     return new Response(
       JSON.stringify({
         error: "Internal server error",
-        details: error.message,
+        details: error instanceof Error ? error.message : String(error),
       }),
       {
         headers: { "Content-Type": "application/json" },

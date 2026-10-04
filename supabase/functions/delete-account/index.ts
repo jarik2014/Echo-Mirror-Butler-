@@ -23,7 +23,7 @@ const CONFIRMATION_PHRASE = 'DELETE MY ACCOUNT'; // User must type this exactly
 export async function deleteAccountFunction(req: Request, injectedClient?: any): Promise<Response> {
   // Extract trace ID from incoming request
   const incomingTraceId = extractTraceId(Object.fromEntries(req.headers));
-  let traceId = incomingTraceId;
+  let traceId: string = incomingTraceId ?? crypto.randomUUID();
 
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {

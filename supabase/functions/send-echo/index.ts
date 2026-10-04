@@ -68,7 +68,7 @@ function resolveStellarSettings() {
 }
 
 async function importDecryptionKey(rawKey: string) {
-  let decoded: Uint8Array;
+  let decoded: Uint8Array<ArrayBuffer>;
 
   try {
     decoded = decodeBase64(rawKey);
@@ -414,4 +414,4 @@ export async function sendEchoFunction(
   }
 }
 
-Deno.serve(sendEchoFunction);
+Deno.serve((req: Request) => sendEchoFunction(req));

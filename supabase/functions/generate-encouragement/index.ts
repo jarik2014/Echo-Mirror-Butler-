@@ -102,4 +102,4 @@ export async function generateEncouragementFunction(
   }
 }
 
-serve(generateEncouragementFunction);
+serve((req: Request) => generateEncouragementFunction(req));
