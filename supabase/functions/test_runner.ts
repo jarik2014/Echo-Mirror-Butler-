@@ -17,6 +17,9 @@ import "./get-crypto-price.test.ts";
 import "./unsubscribe-digest.test.ts";
 import "./get-agora-credentials.test.ts";
 import "./env-fallback-guard.test.ts";
+// Issue #763: shared cron-only caller check.
+import "./_shared/require-cron-secret_test.ts";
+import "./cleanup-expired-stories/index_test.ts";
 
 // Test utilities
 function createMockRequest(
