@@ -77,6 +77,8 @@ function encodeFilterValue(value: string) {
   return encodeURIComponent(value)
     .replace(/%20/g, '+')
     .replace(/%2C/g, '%2C');
+}
+
 export async function saveFutureLetterFunction(
   req: Request,
   injectedFetch?: typeof fetch,
