@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.192.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
+import { shouldServe } from "../_shared/serve-guard.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -281,4 +282,4 @@ Logs: ${JSON.stringify(recentLogs ?? [])}`;
   }
 }
 
-serve(generateInsightFunction);
+if (shouldServe()) serve(generateInsightFunction);

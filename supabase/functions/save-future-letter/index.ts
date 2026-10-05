@@ -1,5 +1,6 @@
 // deno-lint-ignore-file no-import-prefix
 import { serve } from 'https://deno.land/std@0.192.0/http/server.ts';
+import { shouldServe } from "../_shared/serve-guard.ts";
 
 type SaveFutureLetterBody = {
   userId?: string;
@@ -199,4 +200,4 @@ export async function saveFutureLetterFunction(
   }
 }
 
-serve((req: Request) => saveFutureLetterFunction(req));
+if (shouldServe()) serve((req: Request) => saveFutureLetterFunction(req));

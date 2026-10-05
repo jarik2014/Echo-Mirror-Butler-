@@ -20,6 +20,7 @@ import {
   cronDenialResponse,
   type EnvLike,
 } from '../_shared/require-cron-secret.ts'
+import { shouldServe } from "../_shared/serve-guard.ts";
 
 type SupabaseLike = any
 
@@ -188,6 +189,6 @@ export async function handleCleanupRequest(
   )
 }
 
-Deno.serve((req) => handleCleanupRequest(req))
+if (shouldServe()) Deno.serve((req) => handleCleanupRequest(req))
 
 export default {}

@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { shouldServe } from "../_shared/serve-guard.ts";
 
 const COINGECKO_API_URL = "https://api.coingecko.com/api/v3/simple/price";
 const CACHE_TTL_MINUTES = 5;
@@ -198,4 +199,4 @@ export async function getCryptoPriceFunction(
   }
 }
 
-serve(getCryptoPriceFunction);
+if (shouldServe()) serve(getCryptoPriceFunction);

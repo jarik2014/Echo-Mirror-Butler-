@@ -6,6 +6,7 @@ import {
   storeIdempotencyResult,
   buildReplayedResponse,
 } from '../_shared/idempotency.ts';
+import { shouldServe } from "../_shared/serve-guard.ts";
 
 type SendEchoPayload = {
   recipient_id?: string;
@@ -414,4 +415,4 @@ export async function sendEchoFunction(
   }
 }
 
-Deno.serve((req: Request) => sendEchoFunction(req));
+if (shouldServe()) Deno.serve((req: Request) => sendEchoFunction(req));
